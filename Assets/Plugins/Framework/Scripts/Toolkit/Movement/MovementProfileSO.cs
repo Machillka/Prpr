@@ -24,9 +24,14 @@ namespace Framework.Toolkit.Movement
         public LayerMask groundMask;
         public float groundCheckDistance = 0.1f;
         public Vector2 groundCheckOffset = new Vector2(0f, -0.5f);
-
         public float coyoteTime = 0.12f;        // 离地后可继续跳的时间窗口
         public float jumpBufferTime = 0.12f;    // 提前按跳键后的有效时间窗口
+
+        [Header("Dash")]
+        public float dashVelocity = 20f;
+        public float dashCooldownTime = 1f;
+        public float dashDuration = 0.2f;
+        public float dashRetainSpeed = 0.5f; // Dash 时间结束之后的水平速度分量比例
 
         public override string Validate()
         {

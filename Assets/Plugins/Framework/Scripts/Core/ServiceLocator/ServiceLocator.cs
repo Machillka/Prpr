@@ -10,8 +10,8 @@ namespace Framework.Core.Service
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Field | AttributeTargets.Property)]
     public sealed class ServiceAttribute : Attribute { }
 
-    [AttributeUsage(AttributeTargets.Constructor)]
-    public sealed class ServiceConstructorAttribute : Attribute { }
+    // [AttributeUsage(AttributeTargets.Constructor)]
+    // public sealed class ServiceConstructorAttribute : Attribute { }
 
     public class ServiceLocator : IServiceLocator
     {
@@ -174,7 +174,6 @@ namespace Framework.Core.Service
                         }
                     }
 
-
                 }
                 _scanned = true;
             }
@@ -227,7 +226,7 @@ namespace Framework.Core.Service
                 return comp;
             }
 
-            // TODO: 提供更丰富的构造方式
+            // TODO: 提供含参构造
             var ctor = implType.GetConstructor(Type.EmptyTypes);
             if (ctor == null)
                 throw new InvalidOperationException($"Type {implType.FullName} has no public parameterless constructor. RegisterInstance required.");

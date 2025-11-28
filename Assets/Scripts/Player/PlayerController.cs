@@ -9,7 +9,6 @@ namespace Prpr.Player
     public class PlayerController : MonoBehaviour
     {
         private Rigidbody2D _rb;
-        private Bootstrap _boot;
         private ServiceLocator _serviceLocator;
         private InputService _inputController;
 
@@ -38,16 +37,21 @@ namespace Prpr.Player
             }
 
             _moveController = new PlayerMovement();
-            _moveController.Initialization(_profile, groundCheckTransform, _rb);
+            _moveController.Initialization(_profile, groundCheckTransform, _rb, transform);
             _moveController.EnableMovement(true);
         }
 
         private void Update()
         {
+            var scale = transform.localScale;
+            scale.x = Mathf.Sign(_inputController.playerInputs.x == 0 ? scale.x : _inputController.playerInputs.x);
+            transform.localScale = scale;
+
             // NOTE: 是否需要把所有的输入再进行一次封装？？？ -> 比如封装成一个 "Context"
             _moveController.SetInputs(
                 _inputController.playerInputs,
-                _inputController.isJumpPressed
+                _inputController.IsJumpPressed,
+                _inputController.IsDashPressed
             );
             _moveController.UpdateDrive(Time.deltaTime);
         }

@@ -9,8 +9,9 @@ namespace Prpr.Services
         private MainInputs _inputActions;
         private MainInputs.PlayerActions _playerActions;
 
-        public Vector2 playerInputs;// => _playerActions.Move.ReadValue<Vector2>();
-        public bool isJumpPressed => _playerActions.Jump.WasPressedThisFrame();
+        public Vector2 playerInputs;
+        public bool IsJumpPressed => _playerActions.Jump.WasPressedThisFrame();
+        public bool IsDashPressed => _playerActions.Dash.WasPressedThisFrame();
 
         private void Awake()
         {
