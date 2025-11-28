@@ -16,12 +16,14 @@ MonoBehaviour:
   version: 0.1.0
   description: "\u5B9A\u4E49\u89D2\u8272\u79FB\u52A8\u6570\u503C"
   preview: {fileID: 0}
-  maxSpeed: 6
-  moveSpeed: 6
+  maxSpeed: 8
+  moveSpeed: 8
   acceleration: 30
   deceleration: 40
-  jumpVelocity: 12
-  gravityScale: 3
+  jumpVelocity: 7
+  gravityScale: -20
+  fallMultiplier: 2.5
+  terminalVelocityY: -30
   groundMask:
     serializedVersion: 2
     m_Bits: 64

@@ -19,6 +19,8 @@ namespace Framework.Toolkit.Movement
         [Header("Jump")]
         public float jumpVelocity = 12f;        // 初速度
         public float gravityScale = 3f;         // 自行调整重力（可用于更好曲线）
+        public float fallMultiplier = 2.5f;
+        public float terminalVelocityY = -30f;  // 最大下落速度
         public LayerMask groundMask;
         public float groundCheckDistance = 0.1f;
         public Vector2 groundCheckOffset = new Vector2(0f, -0.5f);

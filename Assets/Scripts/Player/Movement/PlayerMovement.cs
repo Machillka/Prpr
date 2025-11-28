@@ -58,6 +58,18 @@ namespace Prpr.Player
             float accelerationRate = Mathf.Abs(targetSpeed) > 0.01f ? _profile.acceleration : _profile.deceleration;
             float movemntSpeed = deltaSpeed * accelerationRate * Time.fixedDeltaTime;
             _rb.linearVelocityX += movemntSpeed;
+
+            // 跳跃下落额外加速
+            if (_rb.linearVelocityY < 0) // 正在下落
+            {
+                _rb.linearVelocityY += _profile.gravityScale * _profile.fallMultiplier * Time.fixedDeltaTime;
+            }
+            else
+            {
+                _rb.linearVelocityY += _profile.gravityScale * Time.fixedDeltaTime;
+            }
+
+            _rb.linearVelocityY = Mathf.Max(_rb.linearVelocityY, _profile.terminalVelocityY);
         }
 
         private void CoyoteJump(float deltaTime)
